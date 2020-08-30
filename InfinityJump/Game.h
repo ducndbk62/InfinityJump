@@ -1,6 +1,7 @@
 #pragma once
 #include "../3DEngine/3DEngine.h"
 #include "StatesType.h"
+#include "GSPlay.h"
 
 
 class Game

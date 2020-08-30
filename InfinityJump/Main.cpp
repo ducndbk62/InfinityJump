@@ -15,8 +15,6 @@ int Init ( ESContext *esContext )
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	/*Singleton<ResourceManager>::GetInstance()->Init(RM_TXT_FILE);
-	return Singleton<SceneManager>::GetInstance()->Init(SM_TXT_FILE);*/
 	game.Initialize();
 	return 0;
 }
@@ -27,7 +25,6 @@ void Draw ( ESContext *esContext )
 	
 	game.Draw();
 	
-	printf("%d \n", game.m_StateType);
 	eglSwapBuffers ( esContext->eglDisplay, esContext->eglSurface );
 }
 
@@ -38,7 +35,6 @@ void Update ( ESContext *esContext, float deltaTime )
 
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 {
-	//Singleton<SceneManager>::GetInstance()->Key(key, bIsPressed);
 	game.SwitchStateByKey(game.m_StateType, key, bIsPressed);
 }
 

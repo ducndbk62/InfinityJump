@@ -5,7 +5,7 @@
 //class Sprite3D;
 //class Text;
 //class SpriteAnimation;
-class GSMenu //: public GameStateBase
+class GSMenu : public GameStateBase
 {
 
 public:

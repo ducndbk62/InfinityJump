@@ -20,8 +20,7 @@ void Game::Initialize()
 
 void Game::Draw()
 {
-	Singleton<SceneManager>::GetInstance()->Draw();
-	printf("draww ");
+	Singleton<SceneManager>::GetInstance()->Draw(); 
 }
 
 void Game::SwitchStateByKey(StatesType state, unsigned char key, bool bIsPressed)
@@ -58,10 +57,10 @@ void Game::SwitchStateByKey(StatesType state, unsigned char key, bool bIsPressed
 			m_StateType = STATE_Credit;
 			break;
 		case 'p':
-		case 'P':
-			Singleton<ResourceManager>::GetInstance()->Init(RM_PLAY);
-			Singleton<SceneManager>::GetInstance()->Init(SM_PLAY);
+		case ' ':
 			m_StateType = STATE_Play;
+			Singleton<GSPlay>::GetInstance()->Render();
+			Singleton<GSPlay>::GetInstance()->Play();
 			break;
 		}
 		break;
@@ -74,10 +73,33 @@ void Game::SwitchStateByKey(StatesType state, unsigned char key, bool bIsPressed
 		}
 		break;
 	case STATE_Play:
-		if (key == 's' || key == 'S') {
+		switch (key)
+		{
+		case 's':
+		case 'S':
 			Singleton<ResourceManager>::GetInstance()->Init(RM_PAUSE);
 			Singleton<SceneManager>::GetInstance()->Init(SM_PAUSE);
+			m_StateType = STATE_Pause;
+			break;
+		}
+		break;
+	case STATE_Pause:
+		switch (key)
+		{
+		case 'e':
+		case 'E':
+			Singleton<ResourceManager>::GetInstance()->Init(RM_MENU);
+			Singleton<SceneManager>::GetInstance()->Init(SM_MENU);
 			m_StateType = STATE_Menu;
+			break;
+		case 'r':
+		case 'R':
+			Singleton<ResourceManager>::GetInstance()->Init(RM_PLAY);
+			Singleton<SceneManager>::GetInstance()->Init(SM_PLAY);
+			m_StateType = STATE_Play;
+			break;
+		default:
+			break;
 		}
 		break;
 	}

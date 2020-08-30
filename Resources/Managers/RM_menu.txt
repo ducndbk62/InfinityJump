@@ -2,7 +2,7 @@
 
 #2D Textures: 5
 ID 0
-FILE ../Resources/Textures/MenuAndButtons/Menu/MenuBackground.png
+FILE ../Resources/Textures/MenuAndButtons/Menu/Background.png
 TILING REPEAT
 ID 1
 FILE ../Resources/Textures/MenuAndButtons/Menu/MenuButtons/Button_15.png
